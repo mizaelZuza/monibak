@@ -1,14 +1,10 @@
 export default function validaCpf(campo) {
     // 000.000.000-00 retorna 00000000000
     const cpf = campo.value.replace(/\.|-/g, "");
-    console.log(validarNumerosRepetidos(cpf));
-    console.log(validarPrimeiroDigito(cpf));
-    console.log(validarSegundoDigito(cpf));
-
     if (validarNumerosRepetidos(cpf) || !validarPrimeiroDigito(cpf) || !validarSegundoDigito(cpf)) {
-        console.log("Cpf inválido");
+        campo.setCustomValidity("Cpf inválido");
     } else {
-        console.log("Cpf válido");
+        campo.setCustomValidity("");
     }
 }
 
@@ -61,23 +57,5 @@ function checarDigitoVerificador(cpf, digitoVerificador) {
     } else {
         return true;
     }
-
-    //-----Algoritimo base para o calculo do digito verificador
-    // let soma = 0;
-    // let multiplicador = 10;
-    //     for (let posicaoCpf = 0; posicaoCpf < 9; posicaoCpf++){
-    //         soma = soma + parseInt(cpf[posicaoCpf] * multiplicador);
-    //         multiplicador--;
-    //     }
-
-    //     let modulo = soma % 11;
-    //     let digito = modulo < 2 ? 0 : 11 - modulo;
-
-    //     if (digito !== parseInt(cpf[9])){
-    //         return false;
-    //     }else{
-    //         return true;
-    //     }
-    //--------------------------------------------------------------------
 
 }
